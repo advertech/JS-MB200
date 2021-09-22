@@ -2,23 +2,33 @@ const lists = document.querySelectorAll('.feature-sub')
 const btns = document.querySelectorAll('.feature__link')
 
 
-btns.forEach((btnitem, index) => {
-    btnitem.addEventListener('click', () => {
-        btns.forEach((btnitem) => {
-            btnitem.classList.remove('feature__link_active')
-        })
-        btnitem.classList.add('feature__link_active')
+btns.forEach((btn, index) => {
+    btn.addEventListener('click', () => {
+        btns.forEach((btnitem, idx) => {
+            if (btnitem === btn) {
+                btnitem.classList.toggle('feature__link_active')
+                lists[idx].classList.toggle('hidden')
+            }
+            else {
+                btnitem.classList.remove('feature__link_active')
+                lists[idx].classList.add('hidden')
+            }
 
-        lists.forEach((listItem) => {
-            listItem.classList.add('hidden')
         })
-        lists[index].classList.remove('hidden')
-        console.dir(btnitem)
+
     })
 })
 
 
+// btns.forEach((btnitem) => {
+//     btnitem.classList.remove('feature__link_active')
+// })
+// btnitem.classList.toggle('feature__link_active')
 
+// lists.forEach((listItem) => {
+//     listItem.classList.add('hidden')
+// })
+// lists[index].classList.remove('hidden')
 
 
 // for (let i = 0; i < btns.length; i++) {
